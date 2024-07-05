@@ -13,7 +13,7 @@ export function LampDemo() {
     event.preventDefault();
 
     try {
-      const res = await fetch("/api/waitlist", {
+      const res = await fetch("/api/waitlist/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
