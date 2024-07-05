@@ -16,8 +16,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <Toaster position="top-center" containerClassName="text-xs font-bold text-center"/>
+    <html suppressHydrationWarning lang="en">
+       <Toaster
+        position="top-center"
+        containerClassName="text-xs font-bold text-center"
+      />
       <body className={inter.className}>{children}</body>
     </html>
   );

@@ -13,7 +13,7 @@ export function LampDemo() {
     event.preventDefault();
 
     try {
-      const res = await fetch("/api/waitlist/", {
+      const res = await fetch("/api/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,6 +77,7 @@ export function LampDemo() {
     console.log("submitted");
   };
   return (
+    <div>
     <LampContainer>
       <motion.h1
         initial={{ opacity: 0, y: 100 }}
@@ -121,5 +122,6 @@ export function LampDemo() {
         />
       </motion.div>
     </LampContainer>
+    </div>
   );
 }
