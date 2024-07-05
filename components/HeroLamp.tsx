@@ -4,27 +4,24 @@ import { motion } from "framer-motion";
 import { LampContainer } from "./ui/lamp";
 import { PlaceholdersAndVanishInput } from "./ui/placeholders-and-vanish-input";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 export function LampDemo() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-
+  
     try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
+      const res = await axios.post('/api/waitlist', { email }, {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
       });
-
-      const result = await res.json();
-
+  
       if (res.status === 201) {
-        toast.success(result.success,  {
+        toast.success(res.data.success, {
           icon: '✅',
           style: {
             borderRadius: '5px',
@@ -33,7 +30,7 @@ export function LampDemo() {
           },
         });
       } else if (res.status === 409) {
-        toast.error("Email already exists in the wishlist",  {
+        toast.error('Email already exists in the wishlist', {
           icon: '👏',
           style: {
             borderRadius: '5px',
@@ -42,7 +39,7 @@ export function LampDemo() {
           },
         });
       } else {
-        toast.error("An error occurred, please try again later.",  {
+        toast.error('An error occurred, please try again later.', {
           icon: '❌',
           style: {
             borderRadius: '5px',
@@ -51,17 +48,28 @@ export function LampDemo() {
           },
         });
       }
-
-      setEmail("");
+  
+      setEmail('');
     } catch (error) {
-      toast.error("An error occurred, please try again." ,  {
-        icon: '❌',
-        style: {
-          borderRadius: '5px',
-          background: '#333',
-          color: '#c55e0c',
-        },
-      });
+      if (error.response && error.response.status === 409) {
+        toast.error('Email already exists in the wishlist', {
+          icon: '👏',
+          style: {
+            borderRadius: '5px',
+            background: '#333',
+            color: '#c55e0c',
+          },
+        });
+      } else {
+        toast.error('An error occurred, please try again.', {
+          icon: '❌',
+          style: {
+            borderRadius: '5px',
+            background: '#333',
+            color: '#c55e0c',
+          },
+        });
+      }
     }
   };
 
