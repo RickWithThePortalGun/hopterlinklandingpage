@@ -12,7 +12,6 @@ export function LampDemo() {
 
   const handleSubmit = async (event: { preventDefault: () => void; }) => {
     event.preventDefault();
-  
     try {
       const res = await axios.post('/api/waitlist', { email }, {
         headers: {
