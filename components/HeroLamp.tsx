@@ -116,7 +116,6 @@ export function LampDemo() {
           placeholders={placeholders}
           onChange={(e) => {
             setEmail(e.target.value);
-            console.log(email);
           }}
           onSubmit={handleSubmit}
         />
