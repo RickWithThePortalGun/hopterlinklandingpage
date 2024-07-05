@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       { success: "Your email has been added to the wishlist" },
       { status: 201 }
     );
-  } catch (error) {
+  } catch (error:any) {
     if (error.code === 'PGRST116') {
       return NextResponse.json(
         { error: "Email already exists in the wishlist" },
