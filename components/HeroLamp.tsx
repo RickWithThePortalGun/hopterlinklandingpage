@@ -50,7 +50,7 @@ export function LampDemo() {
       }
   
       setEmail('');
-    } catch (error) {
+    } catch (error:any) {
       if (error.response && error.response.status === 409) {
         toast.error('Email already exists in the wishlist', {
           icon: '👏',
