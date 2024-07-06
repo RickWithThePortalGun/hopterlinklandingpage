@@ -5,9 +5,7 @@ import { Toaster } from "react-hot-toast";
 export default function Home() {
   return (
     <main>
-     
-            <LampDemo />
-
+      <LampDemo />
     </main>
   );
 }
