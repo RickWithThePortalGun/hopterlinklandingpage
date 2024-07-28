@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import toast, { Toaster } from "react-hot-toast";
 import { FloatingNav } from "@/components/ui/floating-navbar";
-import { IconDashboard, IconGlass, IconHandLoveYou, IconHome, IconMessage, IconRoad, IconUser } from "@tabler/icons-react";
+import { IconDashboard, IconFriends, IconGlass, IconHandLoveYou, IconHome, IconMessage, IconRoad, IconUser } from "@tabler/icons-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,7 +39,7 @@ export default function RootLayout({
       name: "What we Offer",
       link: "/#carousel",
       icon: (
-        <IconHandLoveYou className="h-4 w-4 text-neutral-500 dark:text-white" />
+        <IconFriends className="h-4 w-4 text-neutral-500 dark:text-white" />
       ),
     },{
       name: "Our Commitment",
