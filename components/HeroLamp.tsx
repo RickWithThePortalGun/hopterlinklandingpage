@@ -127,91 +127,94 @@ export function LampDemo() {
   ];
 
   return (
-    <div>
-      <LampContainer>
-        <motion.h1
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="mt-8  text-center text-4xl font-medium tracking-tight dark:text-white text-black md:text-7xl"
-        >
-          Hopterlink <br /> is coming soon
-        </motion.h1>
-        <motion.div
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.6,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="mt-8 text-center text-md font-medium tracking-tight dark:text-white max-w-full text-black md:text-xl"
-        >
-          <TypewriterEffectSmooth words={words} />
-        </motion.div>
-        <div className="flex flex-col items-center justify-between">
+    <>
+  
+      <div>
+        <LampContainer>
+          <motion.h1
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            className="mt-8  text-center text-4xl font-medium tracking-tight dark:text-white text-black md:text-7xl"
+          >
+            Hopterlink <br /> is coming soon
+          </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
-              delay: 0.9,
+              delay: 0.6,
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="mt-8 text-center text-md font-medium tracking-tight text-white md:text-xl"
+            className="mt-8 text-center text-md font-medium tracking-tight dark:text-white max-w-full text-black md:text-xl"
           >
-            <PlaceholdersAndVanishInput
-              placeholders={placeholders}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              onSubmit={handleSubmit}
-            />
+            <TypewriterEffectSmooth words={words} />
           </motion.div>
-          <motion.div
-            viewport={{ once: true }}
-            variants={fadeIn("up", "spring", 0.5, 2)}
-            initial={`hidden`}
-            whileInView={`show`}
-            className=" cursor-pointer z-40 max-sm:pt-[20%] pt-10  w-full flex justify-center items-center"
-          >
-            <div
-              className="w-[25px] cursor-pointer h-[74px] rounded-3xl border-[1px] border-grey flex justify-center z-40 items-start p-2"
-              onClick={() => {
-                document.getElementById("about").scrollIntoView({
-                  behavior: "smooth",
-                });
+          <div className="flex flex-col items-center justify-between">
+            <motion.div
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.9,
+                duration: 0.8,
+                ease: "easeInOut",
               }}
+              className="mt-8 text-center text-md font-medium tracking-tight text-white md:text-xl"
             >
-              <motion.svg
-                viewport={{ once: true }}
-                animate={{
-                  y: [0, 24, 0],
+              <PlaceholdersAndVanishInput
+                placeholders={placeholders}
+                onChange={(e) => {
+                  setEmail(e.target.value);
                 }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "loop",
+                onSubmit={handleSubmit}
+              />
+            </motion.div>
+            <motion.div
+              viewport={{ once: true }}
+              variants={fadeIn("up", "spring", 0.5, 2)}
+              initial={`hidden`}
+              whileInView={`show`}
+              className=" cursor-pointer z-40 max-sm:pt-[20%] pt-10  w-full flex justify-center items-center"
+            >
+              <div
+                className="w-[25px] cursor-pointer h-[74px] rounded-3xl border-[1px] border-grey flex justify-center z-40 items-start p-2"
+                onClick={() => {
+                  document.getElementById("about").scrollIntoView({
+                    behavior: "smooth",
+                  });
                 }}
-                xmlns="http://www.w3.org/2000/svg"
-                width="6"
-                height="39"
-                viewBox="0 0 6 39"
-                fill="none"
               >
-                <path
-                  d="M0 0C0 0 0 2.5 3 2.5C6 2.5 6 0 6 0L3 39L0 0Z"
-                  fill="#D9D9D9"
-                />
-              </motion.svg>
-            </div>
-          </motion.div>
-        </div>
-      </LampContainer>
-    </div>
+                <motion.svg
+                  viewport={{ once: true }}
+                  animate={{
+                    y: [0, 24, 0],
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }}
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="6"
+                  height="39"
+                  viewBox="0 0 6 39"
+                  fill="none"
+                >
+                  <path
+                    d="M0 0C0 0 0 2.5 3 2.5C6 2.5 6 0 6 0L3 39L0 0Z"
+                    fill="#D9D9D9"
+                  />
+                </motion.svg>
+              </div>
+            </motion.div>
+          </div>
+        </LampContainer>
+      </div>
+    </>
   );
 }
