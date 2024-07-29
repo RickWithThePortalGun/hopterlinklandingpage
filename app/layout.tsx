@@ -3,7 +3,17 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import toast, { Toaster } from "react-hot-toast";
 import { FloatingNav } from "@/components/ui/floating-navbar";
-import { IconDashboard, IconFriends, IconGlass, IconHandLoveYou, IconHome, IconMessage, IconRoad, IconUser } from "@tabler/icons-react";
+import {
+  IconDashboard,
+  IconFriends,
+  IconGlass,
+  IconHandLoveYou,
+  IconHome,
+  IconMessage,
+  IconRoad,
+  IconUser,
+} from "@tabler/icons-react";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,38 +42,42 @@ export default function RootLayout({
     {
       name: "Our Vision",
       link: "/#vision",
-      icon: (
-        <IconGlass className="h-4 w-4 text-neutral-500 dark:text-white" />
-      ),
-    },{
+      icon: <IconGlass className="h-4 w-4 text-neutral-500 dark:text-white" />,
+    },
+    {
       name: "What we Offer",
       link: "/#carousel",
       icon: (
         <IconFriends className="h-4 w-4 text-neutral-500 dark:text-white" />
       ),
-    },{
+    },
+    {
       name: "Our Commitment",
       link: "/#commitment",
       icon: (
         <IconDashboard className="h-4 w-4 text-neutral-500 dark:text-white" />
       ),
-    },{
+    },
+    {
       name: "Our Journey",
       link: "/#journey",
-      icon: (
-        <IconRoad className="h-4 w-4 text-neutral-500 dark:text-white" />
-      ),
+      icon: <IconRoad className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
   ];
   return (
     <html suppressHydrationWarning lang="en">
       <body className={inter.className}>
-        <main>      <FloatingNav navItems={navItems}/>
-        {children}</main>
-        <Toaster
-          position="top-center"
-          containerClassName="text-xs font-bold text-center"
-        />
+        <ThemeProvider forcedTheme="dark" attribute="class" defaultTheme="dark">
+          <main>
+            {" "}
+            <FloatingNav navItems={navItems} />
+            {children}
+          </main>
+          <Toaster
+            position="top-center"
+            containerClassName="text-xs font-bold text-center"
+          />
+        </ThemeProvider>
       </body>
     </html>
   );
